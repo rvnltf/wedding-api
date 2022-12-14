@@ -1,0 +1,125 @@
+@host=http://localhost:3001
+
+### register
+
+POST {{host}}/api/v1/auth/register HTTP/1.1
+Content-Type: application/json
+
+{
+    "fullname": "Administrator",
+    "username": "admin",
+    "email": "admin@mail.com",
+    "password": "password",
+    "roles": ["admin"],
+    "active": 1
+}
+
+### login
+# @name appAuth
+
+POST {{host}}/api/v1/auth/login HTTP/1.1
+Content-Type: application/json
+
+{
+    "username": "admin",
+    "password": "password"
+}
+
+### variable response
+@accessToken={{appAuth.response.body.data.accessToken}}
+
+### add bridegroom
+POST {{host}}/api/v1/wedding/bridegroom HTTP/1.1
+Authorization: Bearer {{accessToken}}
+Content-Type: application/json
+
+{
+    "groomName": "Rivan",
+    "groomFullName": "Aldi Rivan Maulana Latief",
+    "groomBirthOrder": "pertama",
+    "groomDadName": "Abdul Latif",
+    "groomMomName": "Dewi Arti Handayani",
+    "brideName": "Uyung",
+    "brideFullName": "Nurul Fikriyani",
+    "brideBirthOrder": "pertama",
+    "brideDadName": "Imam Sunardi",
+    "brideMomName": "Nining Kusrinih",
+    "date": "2023-01-08",
+    "subDomain": "uyung-rivan21",
+    "audio": "",
+    "youtubeUrl": "",
+    "religion": 1,
+    "package": 1,
+    "theme": 1,
+    "active": 0
+}
+
+
+### get bridegroom
+GET {{host}}/api/v1/wedding/bridegroom?limit=10&page=3 HTTP/1.1
+Authorization: Bearer {{accessToken}}
+Content-Type: application/json
+
+
+### get bridegroom by id
+GET {{host}}/api/v1/wedding/bridegroom/1 HTTP/1.1
+Authorization: Bearer {{accessToken}}
+Content-Type: application/json
+
+
+### update bridegroom
+PUT  {{host}}/api/v1/wedding/bridegroom/2 HTTP/1.1
+Authorization: Bearer {{accessToken}}
+Content-Type: application/json
+
+{
+    "groomName": "XXXX",
+    "groomFullName": "Aldi Rivan Maulana Latief"
+}
+
+
+### update active bridegroom
+PATCH  {{host}}/api/v1/wedding/bridegroom/isActiveBridegroom/5 HTTP/1.1
+Authorization: Bearer {{accessToken}}
+Content-Type: application/json
+
+{
+    "active": false
+}
+
+
+### delete bridegroom by id
+DELETE  {{host}}/api/v1/wedding/bridegroom/2 HTTP/1.1
+Authorization: Bearer {{accessToken}}
+Content-Type: application/json
+
+### add bridegroom
+POST {{host}}/api/v1/wedding/event HTTP/1.1
+Authorization: Bearer {{accessToken}}
+Content-Type: application/json
+
+{
+    "eventName": "Akad Nikah",
+    "eventDate": "2023-01-08 08:00:00",
+    "eventTime": "08.00 WIB - Selesai",
+    "eventLocation": "Rumah Mempelai Wanita",
+    "eventAddress": "Jl. Di Panjaitan No.77, Karanganyar, Kec. Indramayu, Kabupaten Indramayu, Jawa Barat 45213",
+    "eventMapUrl": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3965.4500743418803!2d108.33040791476984!3d-6.3356983954150135!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e6eb88ae2325cd3%3A0x55c670af516e6a62!2sGrand%20Trisula%20Hotel!5e0!3m2!1sen!2sid!4v1652448619129!5m2!1sen!2sid\"",
+    "showMaps": true,
+    "bridegroomId": 1
+}
+
+### get bridegroom by id
+GET {{host}}/api/v1/wedding/event/1 HTTP/1.1
+Authorization: Bearer {{accessToken}}
+Content-Type: application/json
+
+
+### update bridegroom
+PATCH  {{host}}/api/v1/wedding/event/3 HTTP/1.1
+Authorization: Bearer {{accessToken}}
+Content-Type: application/json
+
+{
+    "eventName": "Akad Nikah"
+}
