@@ -11,6 +11,7 @@ import user from "./routes/user.js";
 import admin from "./routes/admin.js";
 import bridegroom from "./routes/wedding/bridegroom.js";
 import event from "./routes/wedding/event.js";
+import wish from "./routes/wedding/wish.js";
 import handleErrors from "./middleware/handleErrors.js";
 
 const app = express();
@@ -55,6 +56,7 @@ app.use("/api/v1/admin", admin);
 
 app.use("/api/v1/wedding/bridegroom", bridegroom);
 app.use("/api/v1/wedding/event", event);
+app.use("/api/v1/wedding/wish", wish);
 
 app.use(handleErrors);
 

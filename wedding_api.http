@@ -93,7 +93,7 @@ DELETE  {{host}}/api/v1/wedding/bridegroom/2 HTTP/1.1
 Authorization: Bearer {{accessToken}}
 Content-Type: application/json
 
-### add bridegroom
+### add event
 POST {{host}}/api/v1/wedding/event HTTP/1.1
 Authorization: Bearer {{accessToken}}
 Content-Type: application/json
@@ -109,13 +109,13 @@ Content-Type: application/json
     "bridegroomId": 1
 }
 
-### get bridegroom by id
+### get event by id
 GET {{host}}/api/v1/wedding/event/1 HTTP/1.1
 Authorization: Bearer {{accessToken}}
 Content-Type: application/json
 
 
-### update bridegroom
+### update event by id
 PATCH  {{host}}/api/v1/wedding/event/3 HTTP/1.1
 Authorization: Bearer {{accessToken}}
 Content-Type: application/json
@@ -123,3 +123,27 @@ Content-Type: application/json
 {
     "eventName": "Akad Nikah"
 }
+
+
+### add wish
+POST {{host}}/api/v1/wedding/wish HTTP/1.1
+Content-Type: application/json
+
+{
+    "name": "Rivan ++",
+    "ucapan": "Selamat Menikah Juga Lagi dan Seterusnyaaa",
+    "time": "",
+    "bridegroomId": 1
+}
+
+### get bridegroom
+GET {{host}}/api/v1/wedding/wish?limit=10&page=0 HTTP/1.1
+Content-Type: application/json
+
+### get event by id
+GET {{host}}/api/v1/wedding/wish/3 HTTP/1.1
+Content-Type: application/json
+
+### delete wish by id
+DELETE  {{host}}/api/v1/wedding/wish/10 HTTP/1.1
+Content-Type: application/json

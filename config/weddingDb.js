@@ -8,6 +8,7 @@ import Wishes from "../models/wedding/wishes.js";
 
 const sequelize = new Sequelize("wedding_db", "root", "admin", {
   host: process.env.HOST,
+  port: 3307,
   dialect: "mysql",
   operatorAliases: false,
   logging: false,

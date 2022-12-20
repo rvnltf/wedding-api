@@ -2,7 +2,7 @@ import express from "express";
 import { verifyToken, isAdmin } from "../../utils/verifyAuth.js";
 import addEvent from "../../controllers/wedding/event/addEvent.js";
 import getEvents from "../../controllers/wedding/event/getEvents.js";
-import getEventById from "../../controllers/wedding/event/getEventById.js";
+import getEventById from "../../controllers/wedding/wish/getWishById.js";
 import updateEvent from "../../controllers/wedding/event/updateEvent.js";
 import deleteEvent from "../../controllers/wedding/event/deleteEvent.js";
 
